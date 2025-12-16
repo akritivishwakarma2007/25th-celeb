@@ -15,7 +15,14 @@ scope = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-creds_json = json.loads(os.environ["GOOGLE_CREDS_JSON"])
+
+if "GOOGLE_CREDS_JSON" in os.environ:
+    # 🔥 Server / Production (Render, Railway, etc.)
+    creds_json = json.loads(os.environ["GOOGLE_CREDS_JSON"])
+else:
+    # 🖥️ Local development
+    with open("thcelebrate-cb89c09c59b7.json", "r") as f:
+        creds_json = json.load(f)
 
 creds = ServiceAccountCredentials.from_json_keyfile_dict(
     creds_json, scope
@@ -26,7 +33,7 @@ client = gspread.authorize(creds)
 SPREADSHEET_ID = "1bBdvAZqwzyMhJKswTZYqhsFbPRcjaqv9zFn2QG4KkYg"
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
-HEADERS = ["Full Name", "Designation", "Email", "Mobile", "Timestamp"]
+HEADERS = ["Full Name", "Batch", "Designation", "Email", "Mobile", "Timestamp"]
 
 # Add headers if empty
 if sheet.row_values(1) == []:
@@ -47,13 +54,14 @@ def register():
 def register_submit():
     try:
         full_name = request.form.get("fullName")
+        batch = request.form.get("batch")
         designation = request.form.get("designation")
         email = request.form.get("email")
         mobile = request.form.get("mobile")
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         sheet.append_row(
-            [full_name, designation, email, mobile, timestamp],
+            [full_name, batch, designation, email, mobile, timestamp],
             value_input_option="RAW"
         )
 
