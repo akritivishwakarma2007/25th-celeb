@@ -1,0 +1,62 @@
+from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from datetime import datetime
+
+app = Flask(__name__)
+CORS(app)
+
+scope = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive"
+]
+
+creds = ServiceAccountCredentials.from_json_keyfile_name(
+    "thcelebrate-cb89c09c59b7.json", scope
+)
+
+client = gspread.authorize(creds)
+
+SPREADSHEET_ID = "1bBdvAZqwzyMhJKswTZYqhsFbPRcjaqv9zFn2QG4KkYg"
+sheet = client.open_by_key(SPREADSHEET_ID).sheet1
+
+HEADERS = ["Full Name", "Designation", "Email", "Mobile", "Timestamp"]
+
+# Add headers if empty
+if sheet.row_values(1) == []:
+    sheet.insert_row(HEADERS, 1)
+
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+
+@app.route("/register-submit", methods=["POST"])
+def register_submit():
+    try:
+        full_name = request.form.get("fullName")
+        designation = request.form.get("designation")
+        email = request.form.get("email")
+        mobile = request.form.get("mobile")
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        sheet.append_row(
+            [full_name, designation, email, mobile, timestamp],
+            value_input_option="RAW"
+        )
+
+        return jsonify({"status": "success"})
+
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

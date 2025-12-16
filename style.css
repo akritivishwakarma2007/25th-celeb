@@ -1,0 +1,185 @@
+/* style.css */
+/* Clean, modern, professional theme */
+/* Color palette: Navy Blue (#001f3f), White (#ffffff), Silver (#c0c0c0), Gold (#ffd700) accents */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #001f3f;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #001f3f;
+    color: #ffffff;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.logo-left img, .logo-right img {
+    height: 50px; /* Adjust as needed */
+}
+
+.college-name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #ffd700; /* Gold accent */
+}
+
+.hero {
+    background-color: #001f3f;
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+}
+
+.hero p {
+    font-size: 1.5em;
+}
+
+.cta-button {
+    background-color: #c0c0c0; /* Silver */
+    color: #001f3f;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #ffd700; /* Gold */
+}
+
+.content-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.registration-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.registration-form input, .registration-form select, .registration-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input {
+    width: auto;
+    margin-right: 5px;
+}
+
+.registration-form button {
+    background-color: #001f3f;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: #ffd700;
+    color: #001f3f;
+}
+
+#success-message {
+    color: green;
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #001f3f;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hero {
+        padding: 50px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+}
+
+/* Countdown Styles */
+#countdown {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #ffd700;
+}
