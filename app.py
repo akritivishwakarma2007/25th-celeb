@@ -33,12 +33,12 @@ if sheet.row_values(1) == []:
     sheet.insert_row(HEADERS, 1)
 
 
+# @app.route("/")
+# def home():
+#     return render_template("index.html")
+
+
 @app.route("/")
-def home():
-    return render_template("index.html")
-
-
-@app.route("/register")
 def register():
     return render_template("register.html")
 
