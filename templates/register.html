@@ -41,7 +41,7 @@
             margin: 0 auto;
         }
 
-        .logo-left img{
+        .logo-left img {
             width: 90px;
             height: auto;
             border-radius: 80px;
@@ -50,13 +50,19 @@
         }
 
         .logo img {
-            width: 90px;
+            width: 200px;
             height: auto;
-            border-radius: 80px;
+            border-radius: 40px;
             object-fit: contain;
             background: transparent;
+            mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
         }
-        
+
+        .logo {
+            height: 200px;
+        }
+
 
         .college-info {
             text-align: center;
@@ -83,7 +89,7 @@
 
         .dept {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 25px;
             margin-top: 0px;
             color: black;
         }
@@ -114,12 +120,30 @@
 
         .registration-section {
             position: relative;
-            background: #c2c4c8;
-            color: white;
-            text-align: center;
-            padding: 20px 20px 20px;
+            width: 100%;
             min-height: 50vh;
+            background-image: url("{{ url_for('static', filename='images/silver2.png') }}");
+            background-size: cover;
+            /* 👈 makes portrait look landscape */
+            background-position: center;
+            /* 👈 keeps it centered */
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 20px;
         }
+
+        /* .registration-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.7),
+        rgba(255,255,255,0.3)
+    );
+    z-index: 1;
+} */
+
 
         .registration-section h1 {
             font-family: 'Playfair Display', serif;
@@ -129,12 +153,18 @@
             color: black;
         }
 
+
         .registration-section p {
-            font-size: 24px;
-            max-width: 900px;
-            margin: 0 auto 40px;
+            font-size: 20px;
+            font-weight: bold;
+            max-width: 1000px;
+            margin: 0 auto 0px;
             opacity: 0.95;
-             color: black;
+            color: #256cb1;
+        }
+
+        .triumph {
+            font-size: 20px;
         }
 
         .countdown {
@@ -151,23 +181,24 @@
         .countdown-wrapper {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .time-block {
             text-align: center;
-            min-width: 110px;
+            min-width: 20px;
         }
 
         .number {
+            width: 60px;
             position: relative;
             display: block;
-            font-size: 50px;
+            font-size: 30px;
             color: black;
             text-shadow: 0 0 25px white;
             background: white;
-            padding: 20px 10px;
+            padding: 15px 5px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.3);
             overflow: hidden;
@@ -217,13 +248,13 @@
         }
 
         .label {
-            font-size: 20px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-top: 15px;
+            letter-spacing: 0px;
+            margin-top: 7px;
             opacity: 0.9;
             color: black;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            /* text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); */
         }
 
         .date-note {
@@ -243,6 +274,7 @@
             box-shadow: 0 20px 50px black;
             border: 1px solid #e0e0e0;
         }
+
 
         .form-container h2 {
             font-family: 'Playfair Display', serif;
@@ -355,7 +387,7 @@
             }
 
             .college-info {
-                margin: 25px 0;
+                margin: 10px 0;
             }
 
             form {
@@ -374,7 +406,7 @@
         @media (max-width: 768px) {
             .main-header {
                 padding: 0px 11px;
-                height: 15vh;
+                height: 14vh;
             }
 
             .top-bar {
@@ -400,8 +432,12 @@
             }
 
             .dept {
-                font-size: 12px;
+                font-size: 11px;
                 margin-top: 0px;
+            }
+
+            .triumph {
+                font-size: 15px;
             }
 
             .simple-nav a {
@@ -411,6 +447,9 @@
 
             .registration-section {
                 padding: 10px 20px 30px;
+                background-size: cover;
+                background-position: center top;
+                min-height: 48vh;
             }
 
             .registration-section h1 {
@@ -418,11 +457,15 @@
             }
 
             .registration-section p {
-                font-size: 15px;
+                font-size: 10px;
+            }
+
+            .logo {
+                height: 121px;
             }
 
             .countdown {
-                padding: 15px 15px;
+                padding: 5px 5px;
             }
 
             .countdown-wrapper {
@@ -434,12 +477,12 @@
             }
 
             .number {
-                font-size: 48px;
-                padding: 15px 10px;
+                font-size: 20px;
+                padding: 5px 1px;
             }
 
             label {
-                font-size: 15px;
+                font-size: 12px;
 
             }
 
@@ -468,7 +511,7 @@
             }
 
             .registration-section p {
-                font-size: 15px;
+                font-size: 12px;
             }
 
             .countdown-wrapper {
@@ -476,11 +519,11 @@
             }
 
             .number {
-                font-size: 40px;
+                font-size: 15px;
             }
 
             .label {
-                font-size: 12px;
+                font-size: 9px;
             }
         }
     </style>
@@ -494,23 +537,30 @@
             </div>
             <div class="college-info">
                 <div class="college-name">B. K. BIRLA COLLEGE, KALYAN</div>
-                <div class="college-subtitle">'Empowered Autonomous Status'</div>
+                <div class="college-subtitle">(Empowered Autonomous Status)</div>
                 <div class="college-subtitle">Conducted by Kalyan Citizens' Education Society</div>
                 <div class="college-subtitle">Affiliated to University of Mumbai</div>
-                <div class="college-subtitle">Reaccredited by NAAC (4th Cycle) with <span class="naac">A++ Grade</span>
+                <div class="college-subtitle">Reaccredited by NAAC (4<span style="font-size: 10px;">th</span> Cycle)
+                    with <span class="naac">A++ Grade</span>
                     (CGPA 3.51)</div>
-                <div class="dept">Department of Information Technology & Computer Science</div>
+
             </div>
-           
+
 
         </div>
     </header>
 
     <section class="registration-section">
+
+        <p>Dear Esteemed Alumni,<br>We would be honoured to have your gracious presence at Silver Jubilee Celebration of
+        </p>
+        <div class="dept">Department of Computer Science & Information Technology</div>
         <div class="logo">
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
-      </div>
-      <p>Dear Esteemed Alumni,<br>We would be honoured to have your gracious presence at Silver Jubilee Celebration</p>
+            <!-- <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo"> -->
+        </div>
+        <div class="triumph">
+            <p class="triumph">Technological Revolution , Innovation, Unity & Milestones of Progressive Heritage</p>
+        </div>
         <div class="countdown">
             <div class="countdown-wrapper">
                 <div class="time-block">
@@ -530,7 +580,7 @@
                     <div class="label">Seconds</div>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
@@ -549,6 +599,14 @@
             <div>
                 <label for="designation">Current Designation <span style="color: red;">*</span></label>
                 <input type="text" id="designation" name="designation" placeholder="e.g., Software Engineer" required>
+            </div>
+            <div>
+                <label for="Organization">Current Organization / Employer <span style="color: red;">*</span></label>
+                <input type="text" id="Organization" name="Organization" placeholder="" required>
+            </div>
+            <div>
+                <label for="Experience">Year of Experience <span style="color: red;">*</span></label>
+                <input type="text" id="Experience" name="Experience" placeholder="" required>
             </div>
 
             <div>
