@@ -33,7 +33,7 @@ client = gspread.authorize(creds)
 SPREADSHEET_ID = "1bBdvAZqwzyMhJKswTZYqhsFbPRcjaqv9zFn2QG4KkYg"
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
-HEADERS = ["Full Name", "Batch", "Designation", "Email", "Mobile", "Timestamp"]
+HEADERS = ["Full Name", "Batch", "Designation","Organization", "Email", "Mobile", "Timestamp"]
 
 # Add headers if empty
 if sheet.row_values(1) == []:
@@ -56,12 +56,14 @@ def register_submit():
         full_name = request.form.get("fullName")
         batch = request.form.get("batch")
         designation = request.form.get("designation")
+        Organization = request.form.get("Organization")
+        Experience = request.form.get("Experience")
         email = request.form.get("email")
         mobile = request.form.get("mobile")
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         sheet.append_row(
-            [full_name, batch, designation, email, mobile, timestamp],
+            [full_name, batch, designation, Organization, Experience, email, mobile, timestamp],
             value_input_option="RAW"
         )
 
